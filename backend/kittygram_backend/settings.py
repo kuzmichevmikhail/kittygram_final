@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv(
     'SECRET_KEY',
-    'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+    'django-insecure-temporary-secret-key'
 )
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
@@ -63,7 +63,7 @@ WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', os.getenv('POSTGRES_DB', 'kittygram')),
+        'NAME': os.getenv('POSTGRES_DB', 'kittygram'),
         'USER': os.getenv('POSTGRES_USER', 'kittygram_user'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'kittygram_password'),
         'HOST': os.getenv('DB_HOST', 'db'),
@@ -101,13 +101,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'static_backend'
-
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -124,3 +118,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
 
 }
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'collected_static'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
